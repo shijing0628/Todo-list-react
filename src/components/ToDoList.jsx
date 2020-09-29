@@ -24,6 +24,7 @@ function ToDoList({ items, clearList, handleDelete, handleEdit }) {
                 />
               );
             })}
+
           <button
             onClick={clearList}
             className="btn btn-outline-danger add-btn mx-5 mb-5 px-4"

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ToDoInput({ handleSubmit }) {
+function ToDoInput({ handleSubmit, editItem }) {
   const [inputText, setInputText] = useState("");
   const handleChangeInput = (e) => {
     setInputText(e.target.value);
@@ -24,10 +24,14 @@ function ToDoInput({ handleSubmit }) {
               ></input>
             </div>
             <button
-              className="btn btn-outline-primary mt-3 mx-5 mb-5 px-4"
               type="submit"
+              className={
+                editItem
+                  ? "btn mt-3 mx-5 mb-5 px-4 btn-danger"
+                  : "btn mt-3 mx-5 mb-5 px-4  btn-outline-primary"
+              }
             >
-              Add to List
+              {editItem ? "Edit List" : "Add to List"}
             </button>
           </form>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import ToDoInput from "./components/ToDoInput";
 import ToDoList from "./components/ToDoList";
@@ -34,12 +34,12 @@ function App() {
   const handleEdit = (id) => {
     const deleteItem = items.filter((item) => item.id !== id);
     setItems(deleteItem);
-
     let editItem = items.find((item) => item.id === id);
-
     setItems({
       items: deleteItem,
-      item: editItem.title,
+      title: editItem.title,
+      editItem: true,
+      id: id,
     });
 
     console.log(editItem);
@@ -51,7 +51,7 @@ function App() {
         <div className="row">
           <div className="col-10 mx-auto col-md-8 mt-4">
             <h3 className="text-uppercase text-center">My First todo App</h3>
-            <ToDoInput handleSubmit={handleSubmit} />
+            <ToDoInput handleSubmit={handleSubmit} editItem={editItem} />
             <ToDoList
               items={items}
               clearList={clearList}
