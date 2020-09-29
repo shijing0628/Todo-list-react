@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ToDoItem from "./ToDoItem";
 
 function ToDoList({ items, clearList, handleDelete, handleEdit }) {
-  const { title, id } = items;
   return (
     <>
       <ul className="list-group my-5">
@@ -15,12 +14,12 @@ function ToDoList({ items, clearList, handleDelete, handleEdit }) {
               return (
                 <ToDoItem
                   key={index}
-                  title={title}
+                  title={item.title}
                   handleDelete={() => {
-                    handleDelete(id);
+                    handleDelete(item.id);
                   }}
                   handleEdit={() => {
-                    handleEdit(id);
+                    handleEdit(item.id);
                   }}
                 />
               );

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 
-function ToDoInput({ handleSubmit, handleChangeInput }) {
+function ToDoInput({ handleSubmit }) {
+  const [inputText, setInputText] = useState("");
+  const handleChangeInput = (e) => {
+    setInputText(e.target.value);
+  };
   return (
     <>
       <div className="card text-center mt-5">
         <h1 className="text-center">Todo Input</h1>
         <div className="card-body">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(e) => handleSubmit(e, inputText)}>
             <div className="input-group">
               <div className="input-group-prepend">
                 <span className="input-group-text">Input</span>
