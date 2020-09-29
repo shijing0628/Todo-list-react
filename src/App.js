@@ -32,11 +32,17 @@ function App() {
   };
 
   const handleEdit = (id) => {
-    handleDelete(id);
+    const deleteItem = items.filter((item) => item.id !== id);
+    setItems(deleteItem);
+
     let editItem = items.find((item) => item.id === id);
+
     setItems({
-      title: editItem.title,
+      items: deleteItem,
+      item: editItem.title,
     });
+
+    console.log(editItem);
   };
 
   return (
