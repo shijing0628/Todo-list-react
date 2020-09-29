@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function ToDoInput({ handleSubmit, editItem }) {
+function ToDoInput({ handleSubmit, editItem, editInfo }) {
   const [inputText, setInputText] = useState("");
+
   const handleChangeInput = (e) => {
     setInputText(e.target.value);
   };
+
+  useEffect(() => {
+    setInputText(editInfo && editInfo.title ? editInfo.title : "");
+  }, [editInfo]);
+
   return (
     <>
       <div className="card text-center mt-5">
@@ -16,12 +22,14 @@ function ToDoInput({ handleSubmit, editItem }) {
                 <span className="input-group-text">Input</span>
               </div>
               <input
+                value={inputText}
                 type="text"
                 name="myinput"
                 className="form-control text-capitalize"
                 placeholder="please add your event"
                 onChange={handleChangeInput}
-              ></input>
+              />
+              <input type="reset" defaultValue="Reset" />
             </div>
             <button
               type="submit"

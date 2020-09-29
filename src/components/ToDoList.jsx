@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import ToDoItem from "./ToDoItem";
 
-function ToDoList({ items, clearList, handleDelete, handleEdit }) {
-  let myItems = Array.from(items);
+function ToDoList({
+  items,
+  clearList,
+  handleDelete,
+  handleEdit,
+  addContentToItem,
+}) {
   return (
     <>
       <ul className="list-group my-5">
         <div className="d-flex flex-column">
           <h1 className="text-center mt-5 mx-auto">My Todo List</h1>
 
-          {myItems.length !== 0 &&
-            myItems.map((item, index) => {
+          {items.length !== 0 &&
+            items.map((item, index) => {
               return (
                 <ToDoItem
+                  itemContent={item.textContent ? item.textContent : ""}
+                  itemId={item.id}
                   key={index}
                   title={item.title}
                   handleDelete={() => {
@@ -21,6 +28,7 @@ function ToDoList({ items, clearList, handleDelete, handleEdit }) {
                   handleEdit={() => {
                     handleEdit(item.id);
                   }}
+                  addContentToItem={addContentToItem}
                 />
               );
             })}
