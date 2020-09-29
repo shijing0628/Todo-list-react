@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { MdDescription } from "react-icons/md";
+import DatePicker from "react-datepicker";
 function ToDoItem({
   title,
   handleDelete,
@@ -11,6 +12,13 @@ function ToDoItem({
 }) {
   const [textEnable, setTextEnable] = useState(false);
   const [textContent, setTextContent] = useState(itemContent);
+  const [startDate, setStartDate] = useState(new Date());
+
+  const ExampleCustomInput = ({ value, onClick }) => (
+    <button className="example-custom-input" onClick={onClick}>
+      {value}
+    </button>
+  );
   const handleClick = () => {
     if (textEnable) {
       addContentToItem(itemId, textContent);
@@ -37,12 +45,20 @@ function ToDoItem({
           <span className="text-danger mx-2">
             <AiFillDelete onClick={handleDelete} />
           </span>
+
+          <DatePicker
+            style={{ width: "100%" }}
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            customInput={<ExampleCustomInput />}
+          />
         </div>
       </li>
       {textEnable ? (
         <textarea
+          class="form-control"
+          aria-label="With textarea"
           rows="4"
-          cols="50"
           onChange={(e) => {
             setTextContent(e.target.value);
           }}

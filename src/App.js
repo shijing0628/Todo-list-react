@@ -45,7 +45,7 @@ function App() {
     });
     setEditItem(true);
   };
-
+  //text area
   const addContentToItem = (id, textContent) => {
     const updatedItems = items.map((item) => {
       if (item.id === id) {
