@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ToDoInput from "./components/ToDoInput";
 import ToDoList from "./components/ToDoList";
@@ -82,3 +82,4 @@ function App() {
 }
 
 export default App;
+

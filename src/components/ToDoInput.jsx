@@ -29,7 +29,6 @@ function ToDoInput({ handleSubmit, editItem, editInfo }) {
                 placeholder="please add your event"
                 onChange={handleChangeInput}
               />
-              <input type="reset" defaultValue="Reset" />
             </div>
             <button
               type="submit"
@@ -49,3 +48,4 @@ function ToDoInput({ handleSubmit, editItem, editInfo }) {
 }
 
 export default ToDoInput;
+
